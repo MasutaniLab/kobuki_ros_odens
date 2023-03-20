@@ -145,55 +145,28 @@
 	  </gazebo>
 
 	  <gazebo reference="gyro_link">
-	   <sensor type="imu" name="imu">
-        <plugin name="gazebo_ros_imu_controller" filename="libgazebo_ros_imu_sensor.so">
-          <ros>
-            <argument>~/out:=imu</argument>
-          </ros>
-          <output_type>sensor_msgs/msg/Imu</output_type>
-          <body_name>gyro_link</body_name>
-          <frame_name>gyro_link</frame_name>
-        </plugin>
-        <always_on>true</always_on>
+	    <sensor type="imu" name="imu">
+        <always_on>1</always_on>
         <update_rate>50</update_rate>
-        <visualize>false</visualize>
-        <imu>
-          <noise>
-            <type>gaussian</type>
-	          <rate>
-	            <mean>0.0</mean>
-	            <stddev>${0.0014*0.0014}</stddev> <!-- 0.25 x 0.25 (deg/s) -->
-	            <bias_mean>0.0</bias_mean>
-	            <bias_stddev>0.0</bias_stddev>
-	          </rate>
-		        <accel> <!-- not used in the plugin and real robot, hence using tutorial values -->
-			        <mean>0.0</mean>
-			        <stddev>1.7e-2</stddev>
-			        <bias_mean>0.1</bias_mean>
-			        <bias_stddev>0.001</bias_stddev>
-		        </accel>
-          </noise>
-	      </imu>
+        <visualize>true</visualize>
+        <topic>imu</topic>
       </sensor>
 	  </gazebo>
 
 	  <gazebo>
-      <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-        <update_rate>30</update_rate>
+      <plugin
+        filename="libignition-gazebo-diff-drive-system.so"
+        name="ignition::gazebo::systems::DiffDrive">
         <left_joint>wheel_left_joint</left_joint>
         <right_joint>wheel_right_joint</right_joint>
         <wheel_separation>0.230</wheel_separation>
-        <wheel_diameter>0.070</wheel_diameter>
-        <max_wheel_torque>1.0</max_wheel_torque>
-        <max_wheel_acceleration>1.0</max_wheel_acceleration>
-        <command_topic>cmd_vel</command_topic>
-        <!-- output -->
-        <publish_odom>true</publish_odom>
-        <publish_odom_tf>true</publish_odom_tf>
-        <publish_wheel_tf>true</publish_wheel_tf>
-        <odometry_topic>odom</odometry_topic>
-        <odometry_frame>odom</odometry_frame>
-        <robot_base_frame>base_footprint</robot_base_frame>
+        <wheel_radius>0.035</wheel_radius>
+        <odom_publish_frequency>30</odom_publish_frequency>
+        <topic>cmd_vel</topic>
+        <odom_topic>odom</odom_topic>
+        <tf_topic>tf</tf_topic>
+        <frame_id>odom</frame_id>
+        <child_frame_id>base_footprint</child_frame_id>
 	    </plugin>
 	  </gazebo>
 	  
