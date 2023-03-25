@@ -5,19 +5,19 @@
 	  <gazebo reference="wheel_left_link">
 	    <mu1>1.0</mu1>
 	    <mu2>1.0</mu2>
-	    <kp>1000000.0</kp>
-	    <kd>100.0</kd>
-	    <minDepth>0.001</minDepth>
-	    <maxVel>1.0</maxVel>
+	    <kp>1e+13</kp>
+	    <kd>1.0</kd>
+	    <minDepth>0.0001</minDepth>
+	    <maxVel>0.01</maxVel>
 	  </gazebo>
 
 	  <gazebo reference="wheel_right_link">
 	    <mu1>1.0</mu1>
 	    <mu2>1.0</mu2>
-	    <kp>1000000.0</kp>
-	    <kd>100.0</kd>
-	    <minDepth>0.001</minDepth>
-	    <maxVel>1.0</maxVel>
+	    <kp>1e+13</kp>
+	    <kd>1.0</kd>
+	    <minDepth>0.0001</minDepth>
+	    <maxVel>0.01</maxVel>
 	  </gazebo>
 
 	  <gazebo reference="caster_front_link">
@@ -159,8 +159,10 @@
         name="ignition::gazebo::systems::DiffDrive">
         <left_joint>wheel_left_joint</left_joint>
         <right_joint>wheel_right_joint</right_joint>
-        <wheel_separation>0.230</wheel_separation>
-        <wheel_radius>0.035</wheel_radius>
+		<!-- オドメトリが合うように車輪間隔を調整．0.230 → 0.2506 m -->
+		<!-- 車輪の中央ではなく外側のエッジで接していると解釈できる．0.230 + 0.0206 = 0.2506 -->
+        <wheel_separation>0.2506</wheel_separation>
+        <wheel_radius>0.0350</wheel_radius>
         <odom_publish_frequency>30</odom_publish_frequency>
         <topic>cmd_vel</topic>
         <odom_topic>odom</odom_topic>

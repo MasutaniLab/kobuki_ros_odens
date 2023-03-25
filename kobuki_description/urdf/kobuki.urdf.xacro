@@ -80,11 +80,13 @@
         <origin rpy="0 0 0" xyz="0 0 0"/>
       </collision>
       <inertial>
-        <mass value="0.01" />
+        <!-- 慣性を1kg（元の100倍）にしないとオドメトリが実際よりも大きくなる（車輪が空転している？） -->
+        <!-- 現実的な値ではないので，要改善 -->
+        <mass value="1.00" />
         <origin xyz="0 0 0" />
-        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
-                 iyy="0.001" iyz="0.0"
-                 izz="0.001" />
+        <inertia ixx="3.42e-4" ixy="0.0" ixz="0.0"
+                 iyy="3.42e-4" iyz="0.0"
+                 izz="6.13e-4" />
       </inertial>
     </link>
 
@@ -108,11 +110,13 @@
         <origin rpy="0 0 0" xyz="0 0 0"/>
       </collision>
       <inertial>
-        <mass value="0.01" />
+        <!-- 慣性を1kg（元の100倍）にしないとオドメトリが実際よりも大きくなる（車輪が空転している？） -->
+        <!-- 現実的な値ではないので，要改善 -->
+        <mass value="1.00" />
         <origin xyz="0 0 0" />
-        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
-                 iyy="0.001" iyz="0.0"
-                 izz="0.001" />
+        <inertia ixx="3.42e-4" ixy="0.0" ixz="0.0"
+                 iyy="3.42e-4" iyz="0.0"
+                 izz="6.13e-4" />
       </inertial>
     </link>
 
@@ -140,7 +144,7 @@
     <joint name="caster_back_joint" type="fixed">
       <parent link="base_link"/>
       <child link="caster_back_link"/>
-      <origin xyz="-0.135 0.0 0.009" rpy="${-M_PI/2} 0 0"/>
+      <origin xyz="-0.135 0.0 0.0072" rpy="${-M_PI/2} 0 0"/>
     </joint>
     <link name="caster_back_link">
       <collision>
