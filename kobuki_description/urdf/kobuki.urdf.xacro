@@ -80,14 +80,11 @@
         <origin rpy="0 0 0" xyz="0 0 0"/>
       </collision>
       <inertial>
-        <!-- 慣性を10kg（元の1000倍）にしないとオドメトリが実際よりも大きくなる（車輪が空転している？） -->
-        <!-- OMXを搭載した場合は，1kgからさらに10kgにしないと安定に走行しない． -->
-        <!-- 現実的な値ではないので，要改善 -->
-        <mass value="10.0" />
+        <mass value="0.01" />
         <origin xyz="0 0 0" />
-        <inertia ixx="3.42e-3" ixy="0.0" ixz="0.0"
-                 iyy="3.42e-3" iyz="0.0"
-                 izz="6.13e-3" />
+        <inertia ixx="3.42e-6" ixy="0.0" ixz="0.0"
+                 iyy="3.42e-6" iyz="0.0"
+                 izz="6.13e-6" />
       </inertial>
     </link>
 
@@ -111,14 +108,11 @@
         <origin rpy="0 0 0" xyz="0 0 0"/>
       </collision>
       <inertial>
-        <!-- 慣性を10kg（元の1000倍）にしないとオドメトリが実際よりも大きくなる（車輪が空転している？） -->
-        <!-- OMXを搭載した場合は，1kgからさらに10kgにしないと安定に走行しない． -->
-        <!-- 現実的な値ではないので，要改善 -->
-        <mass value="10.0" />
+        <mass value="0.01" />
         <origin xyz="0 0 0" />
-        <inertia ixx="3.42e-3" ixy="0.0" ixz="0.0"
-                 iyy="3.42e-3" iyz="0.0"
-                 izz="6.13e-3" />
+        <inertia ixx="3.42e-6" ixy="0.0" ixz="0.0"
+                 iyy="3.42e-6" iyz="0.0"
+                 izz="6.13e-6" />
       </inertial>
     </link>
 
